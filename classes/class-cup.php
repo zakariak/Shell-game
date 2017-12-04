@@ -1,7 +1,4 @@
 <?php
-/**
- *
- */
 class Cup
 {
 
@@ -26,7 +23,7 @@ class Cup
 
   public function show() {
     if($this->ball != null) {
-    echo '<div class="cup ' . $this->color . ' ' . $this->positionLocation . '">' . '<div class="ball red"></div>' . '</div>';
+    echo '<div class="cup ' . $this->color . ' ' . $this->positionLocation . '">' . '<div class="ball' . Ball::getColor() . '"></div>' . '</div>';
   }else {
     echo '<div class="cup ' . $this->color . ' ' . $this->positionLocation . '"></div>';
   }
