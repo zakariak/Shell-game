@@ -1,27 +1,37 @@
 <?php
-include 'classes/class-ball.php';
-include 'classes/class-player.php';
-include 'classes/class-cup.php';
+include_once 'classes/class-Ball.php';
+include_once 'classes/class-player.php';
+include_once 'classes/class-cup.php';
+// include_once 'classes/class-start.php';
 
+$Ball = new Ball('red');
+$player = new Player('Zakaria', 100);
+$Cups[] = new Cup('yellow', 'plastic', 0);
+$Cups[] = new Cup('yellow', 'plastic', 1);
+$Cups[] = new Cup('yellow', 'plastic', 2);
 
-$ball = new ball();
-$ball->color = 'red';
-  // $ball->show();
+for ($i=0; $i < count($Cups) ; $i++) {
+  $Cups[$i]->putdown();
+};
 
-$player = new Player();
-$player->name = 'Zakaria';
-$player->amount = 100;
-// $player->show();
+function startGame($Ball, $Cups) {
 
-$cup1 = new Cup('yellow', 'plastic');
-$cup1->ball = $ball;
-$cup1->liftup();
+  // random puts ball under a cup
+  $number = random_int(0, count($Cups) - 1);
+  $view = '';
+  for ($i=0; $i < count($Cups) ; $i++) {
+    if ($number == $i) {
+      $Cups[$i]->ball = $Ball;
+    }
+    $view .= $Cups[$i]->show();
+  }
+  return $view;
+}
 
-$cup2 = new Cup('yellow', 'plastic');
-$cup2->putdown();
+function liftCupUp() {
 
-$cup3 = new Cup('yellow', 'plastic');
-$cup3->putdown();
+}
 
-include 'view/view.php';
+  $gameView = startGame($Ball, $Cups);
+include_once 'view/view.php';
  ?>
