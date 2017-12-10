@@ -7,9 +7,7 @@
 <body>
 
   <div class="cups">
-    <?php $cup1->show(); ?>
-    <?php $cup2->show();?>
-    <?php $cup3->show(); ?>
+    <?php echo $gameView; ?>
     <div class="clear"></div>
   </div>
   <?php $player->show(); ?>
